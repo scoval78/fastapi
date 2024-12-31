@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-LABEL authors="Acer"
+FROM python:3.11-slim
 
-ENTRYPOINT ["top", "-b"]
+COPY . .
+
+RUN pip install -r req.txt
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
